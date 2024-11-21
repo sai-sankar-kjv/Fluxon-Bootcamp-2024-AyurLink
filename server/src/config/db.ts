@@ -10,3 +10,15 @@ export const connectDB = async (): Promise<Database> => {
   });
   return db;
 };
+export const initializeDB = async () => {
+  const db = await connectDB();
+  await db.exec(`CREATE TABLE user (
+username TEXT PRIMARY KEY,
+     full_name TEXT NOT NULL,
+  password TEXT NOT NULL,
+   contact TEXT,
+     email TEXT
+ );
+   
+  `);
+};
